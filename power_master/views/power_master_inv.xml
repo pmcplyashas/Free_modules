@@ -1,0 +1,96 @@
+<odoo>
+
+    # Tree view
+    <record id="power_product_inv_master_tree_view" model="ir.ui.view">
+        <field name="name">power.product.inv.master.tree.view</field>
+        <field name="model">power.master.inv.moves</field>
+        <field name="arch" type="xml">
+            <tree create="1" edit="1" delete="1">
+                <field name="p_create_time"/>
+                <field name="p_prd_name"/>
+                <field name="p_prd_type_id"/>
+                <field name="p_internal_ref_num"/>
+                <field name="p_unit_of_m"/>
+                <field name="p_store_inv"/>
+                <field name="p_store_inv_to"/>
+                <field name="p_batch_no"/>
+                <field name="p_opening"/>
+                <field name="p_inward"/>
+                <field name="p_outward"/>
+                <field name="p_balance"/>
+                <field name="p_price_rate"/>
+                <field name="p_rate_value"/>
+            </tree>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="power_product_inv_master_form_view">
+        <field name="name">power.product.inv.master.form.view</field>
+        <field name="model">power.master.inv.moves</field>
+        <field name="arch" type="xml">
+            <form create="1" edit="1" delete="0">
+                <sheet>
+                    <group>
+                        <field name="p_create_time"/>
+                        <field name="p_prd_name"/>
+                        <field name="p_prd_type_id"/>
+                        <field name="p_internal_ref_num"/>
+                        <field name="p_unit_of_m"/>
+                        <field name="p_store_inv"/>
+                        <field name="p_store_inv_to"/>
+                        <field name="p_batch_no"/>
+                        <field name="p_opening"/>
+                        <field name="p_inward"/>
+                        <field name="p_outward"/>
+                        <field name="p_balance"/>
+                        <field name="p_price_rate"/>
+                        <field name="p_rate_value"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="power_product_inv_master_search_view">
+        <field name="name">power.product.inv.master.search.view</field>
+        <field name="model">power.master.inv.moves</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="p_create_time"/>
+                <field name="p_prd_name"/>
+                <field name="p_prd_type_id"/>
+                <field name="p_internal_ref_num"/>
+                <field name="p_unit_of_m"/>
+                <field name="p_store_inv"/>
+                <field name="p_store_inv_to"/>
+                <field name="p_batch_no"/>
+                <field name="p_opening"/>
+                <field name="p_inward"/>
+                <field name="p_outward"/>
+                <field name="p_balance"/>
+                <field name="p_price_rate"/>
+                <field name="p_rate_value"/>
+
+            </search>
+        </field>
+    </record>
+
+
+    <record id="action_power_inv_product_master_tree_view" model="ir.actions.act_window">
+        <field name="name">Power Inventory Master set</field>
+        <field name="res_model">power.master.inv.moves</field>
+        <field name="view_mode">tree,form,search</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+            </p>
+        </field>
+    </record>
+
+    <menuitem
+            id="menu_master_inv_report"
+            name="Inventory Sub Master Set"
+            action="action_power_inv_product_master_tree_view"
+            parent="stock.menu_warehouse_report"
+            sequence="40"/>
+
+</odoo>

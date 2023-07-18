@@ -1,0 +1,143 @@
+<odoo>
+
+
+    # Tree view for actual report
+    <record id="sub_product_inv_master_tree_view" model="ir.ui.view">
+        <field name="name">sub.product.inv.master.tree.view</field>
+        <field name="model">sub.master.report</field>
+        <field name="arch" type="xml">
+                <tree create="1" edit="0" delete="1">
+                    <field name="sm_create_time"/>
+                    <field name="sm_prd_name"/>
+                    <field name="hsn_code"/>
+                    <field name="sm_prd_type_id"/>
+                    <field name="sm_internal_ref_num"/>
+                    <field name="sm_unit_of_m"/>
+                    <field name="sm_store_inv"/>
+                    <field name="sm_store_inv_to"/>
+                    <field name="sm_batch_no"/>
+                    <field name="sm_opening"/>
+                    <field name="sm_inward"/>
+                    <field name="sm_outward"/>
+                    <field name="sm_balance"/>
+                    <field name="sm_price_rate"/>
+                    <field name="sm_rate_value"/>
+                    <field name="start_date_val"/>
+                    <field name="end_date_val"/>
+                    <field name="compute_vals" optional="hide"/>
+                </tree>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="sub_product_inv_master_form_view">
+        <field name="name">sub.product.inv.master.form.view</field>
+        <field name="model">sub.master.report</field>
+        <field name="arch" type="xml">
+            <form create="1" edit="0" delete="0">
+                <sheet>
+                    <group>
+                        <field name="sm_create_time"/>
+                        <field name="sm_prd_name"/>
+                        <field name="sm_prd_type_id"/>
+                        <field name="sm_internal_ref_num"/>
+                        <field name="sm_unit_of_m"/>
+                        <field name="sm_store_inv"/>
+                        <field name="sm_store_inv_to"/>
+                        <field name="sm_batch_no"/>
+                        <field name="sm_opening"/>
+                        <field name="sm_inward"/>
+                        <field name="sm_outward"/>
+                        <field name="sm_balance"/>
+                        <field name="sm_price_rate"/>
+                        <field name="sm_rate_value"/>
+                        <field name="start_date_val"/>
+                        <field name="end_date_val"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="sub_product_inv_master_search_view">
+        <field name="name">sub.product.inv.master.search.view</field>
+        <field name="model">sub.master.report</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="sm_create_time"/>
+                <field name="sm_prd_name"/>
+                <field name="sm_prd_type_id"/>
+                <field name="sm_internal_ref_num"/>
+                <field name="sm_unit_of_m"/>
+                <field name="sm_store_inv"/>
+                <field name="sm_store_inv_to"/>
+                <field name="sm_batch_no"/>
+                <field name="sm_opening"/>
+                <field name="sm_inward"/>
+                <field name="sm_outward"/>
+                <field name="sm_balance"/>
+                <field name="sm_price_rate"/>
+                <field name="sm_rate_value"/>
+                <field name="start_date_val"/>
+                <field name="end_date_val"/>
+                <group expand="0" string="Group By">
+                    <filter string="Product" name="Product" domain="[]" context="{'group_by': 'sm_prd_name'}"/>
+                    <filter string="Lot No." name="Lot NO." domain="[]" context="{'group_by': 'sm_batch_no'}"/>
+                </group>
+            </search>
+
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="product_inv_master_between_value_form_view">
+        <field name="name">product.inv.master.between.value.form.view</field>
+        <field name="model">inv.between.dates</field>
+        <field name="arch" type="xml">
+            <form create="1" edit="1" delete="0">
+                <sheet>
+                    <group>
+                        <field name="at_start_date"/>
+                        <field name="at_close_date"/>
+                    </group>
+                    <button name="dates_submit" string="Submit" type="object" class="btn-primary"/>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_sub_inv_product_master_all_view" model="ir.actions.act_window">
+        <field name="name">Inventory Master set</field>
+        <field name="res_model">sub.master.report</field>
+        <!--        <field name="context">{'start_date_val': False}</field>-->
+        <field name="view_mode">tree,form,search</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+            </p>
+        </field>
+    </record>
+
+    <record id="action_form_view_for_inv_between_dates" model="ir.actions.act_window">
+        <field name="name">Inventory Between dates Value</field>
+        <field name="res_model">inv.between.dates</field>
+        <field name="view_mode">form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+            </p>
+        </field>
+    </record>
+
+    <menuitem
+            id="menu_sub_master_inv_report"
+            name="Inventory consolidated set"
+            action="action_sub_inv_product_master_all_view"
+            parent="stock.menu_warehouse_report"
+            sequence="20"/>
+
+    <menuitem
+            id="plain_form_view_report"
+            name="Report between dates"
+            action="action_form_view_for_inv_between_dates"
+            parent="stock.menu_warehouse_report"
+            sequence="60"/>
+
+
+</odoo>

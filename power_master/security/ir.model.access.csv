@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_power_inv_master,power.master.inv.moves,model_power_master_inv_moves,,1,1,1,1
+access_sub_master_report,sub.master.report,model_sub_master_report,,1,1,1,1
+access_inv_between_dates,inv.between.dates,model_inv_between_dates,,1,1,1,1
