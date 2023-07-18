@@ -16,6 +16,7 @@
         'views/power_master_inv.xml',
         'views/inv_start_date.xml'
     ],
+    'images': ['static/description/odoo_banner.png'],
     'installable': True,
     'application': False,
     'auto_install': False,
